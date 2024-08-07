@@ -21,7 +21,8 @@ import {
   SPFxGeneratorImport,
   SPFxGeneratorNew,
 } from "../../../src/component/generator/spfx/spfxGenerator";
-import { getShellOptionValue, Utils } from "../../../src/component/generator/spfx/utils/utils";
+import { Utils, getShellOptionValue } from "../../../src/component/generator/spfx/utils/utils";
+import { createContextV3 } from "../../../src/component/utils";
 import { envUtil } from "../../../src/component/utils/envUtil";
 import { FileNotFoundError, UserCancelError } from "../../../src/error";
 import {
@@ -31,6 +32,8 @@ import {
   SPFxVersionOptionIds,
 } from "../../../src/question";
 import { MockTools } from "../../core/utils";
+import { getLocalizedString } from "../../../src/common/localizeUtils";
+import { FileNotFoundError, UserCancelError } from "../../../src/error";
 import os from "os";
 
 describe("SPFxGenerator", function () {

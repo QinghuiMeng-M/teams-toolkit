@@ -18,8 +18,8 @@ import {
 import { DependencyChecker } from "./dependencyChecker";
 import { telemetryHelper } from "../utils/telemetry-helper";
 import { TelemetryEvents, TelemetryProperty } from "../utils/telemetryEvents";
-import { DependencyValidateError } from "../error";
-import { cpUtils } from "../../../deps-checker/util/cpUtils";
+import { DependencyValidateError, NpmInstallError } from "../error";
+import { cpUtils } from "../../../../common/deps-checker/util/cpUtils";
 import { getExecCommand, getShellOptionValue, Utils } from "../utils/utils";
 import { Constants } from "../utils/constants";
 import { NpmInstallError } from "../../../../error";

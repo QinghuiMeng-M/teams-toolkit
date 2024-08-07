@@ -21,8 +21,10 @@ import { DependencyValidateError } from "../error";
 import { Constants } from "../utils/constants";
 import { telemetryHelper } from "../utils/telemetry-helper";
 import { TelemetryEvents, TelemetryProperty } from "../utils/telemetryEvents";
+import { DependencyValidateError, NpmInstallError } from "../error";
+import { cpUtils } from "../../../../common/deps-checker/util/cpUtils";
+import { Constants } from "../utils/constants";
 import { getExecCommand, getShellOptionValue, Utils } from "../utils/utils";
-import { DependencyChecker } from "./dependencyChecker";
 
 const name = Constants.GeneratorPackageName;
 const displayName = `${name}`;
