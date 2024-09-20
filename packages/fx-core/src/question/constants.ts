@@ -780,6 +780,9 @@ export class CapabilityOptions {
       detail: getLocalizedString(
         "core.createProjectQuestion.capability.customCopilotBasicOption.detail"
       ),
+      description: getLocalizedString(
+        "core.createProjectQuestion.capability.customEngineAgent.description"
+      ),
     };
   }
 
