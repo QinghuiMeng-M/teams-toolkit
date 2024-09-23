@@ -1063,7 +1063,6 @@ export function syncManifestQuestionNode(): IQTreeNode {
           name: QuestionNames.ProjectPath,
           title: getLocalizedString("core.syncManifest.projectPath"),
           cliDescription: "Project Path",
-          placeholder: "./",
           default: (inputs: Inputs) =>
             CLIPlatforms.includes(inputs.platform)
               ? "./"
