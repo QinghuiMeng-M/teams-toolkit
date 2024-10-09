@@ -46,6 +46,7 @@ import {
 } from "../../../src/question";
 import { MockTools } from "../../core/utils";
 import { envUtil } from "../../../src/component/utils/envUtil";
+import { envUtil } from "../../../src/component/utils/envUtil";
 
 describe("OfficeAddinGenerator for Outlook Addin", function () {
   const testFolder = path.resolve("./tmp");
@@ -1034,6 +1035,7 @@ describe("OfficeAddinGeneratorNew", () => {
       chai.assert.isTrue(res.isErr());
     });
   });
+
   describe("post()", () => {
     afterEach(() => {
       sandbox.restore();
