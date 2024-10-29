@@ -772,6 +772,9 @@ export class CapabilityOptions {
 
   // custom copilot
   static customCopilotBasic(): OptionItem {
+    const description = featureFlagManager.getBooleanValue(FeatureFlags.CEAEnabled)
+      ? getLocalizedString("core.createProjectQuestion.capability.customEngineAgent.description")
+      : undefined;
     return {
       id: "custom-copilot-basic",
       label: getLocalizedString(
@@ -780,13 +783,14 @@ export class CapabilityOptions {
       detail: getLocalizedString(
         "core.createProjectQuestion.capability.customCopilotBasicOption.detail"
       ),
-      description: getLocalizedString(
-        "core.createProjectQuestion.capability.customEngineAgent.description"
-      ),
+      description: description,
     };
   }
 
   static customCopilotRag(): OptionItem {
+    const description = featureFlagManager.getBooleanValue(FeatureFlags.CEAEnabled)
+      ? getLocalizedString("core.createProjectQuestion.capability.customEngineAgent.description")
+      : undefined;
     return {
       id: "custom-copilot-rag",
       label: getLocalizedString(
@@ -795,10 +799,14 @@ export class CapabilityOptions {
       detail: getLocalizedString(
         "core.createProjectQuestion.capability.customCopilotRagOption.detail"
       ),
+      description: description,
     };
   }
 
   static customCopilotAssistant(): OptionItem {
+    const description = featureFlagManager.getBooleanValue(FeatureFlags.CEAEnabled)
+      ? getLocalizedString("core.createProjectQuestion.capability.customEngineAgent.description")
+      : undefined;
     return {
       id: "custom-copilot-agent",
       label: getLocalizedString(
@@ -807,6 +815,7 @@ export class CapabilityOptions {
       detail: getLocalizedString(
         "core.createProjectQuestion.capability.customCopilotAssistantOption.detail"
       ),
+      description: description,
     };
   }
 }
