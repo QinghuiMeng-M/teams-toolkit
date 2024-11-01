@@ -586,7 +586,6 @@ INSERT [SalesOrderDetail] ([SalesOrderID], [SalesOrderDetailID], [OrderQty], [Pr
 INSERT [SalesOrderDetail] ([SalesOrderID], [SalesOrderDetailID], [OrderQty], [ProductID], [UnitPrice], [UnitPriceDiscount], [rowguid], [ModifiedDate]) VALUES (71938, 113314, 2, 875, 5.3940, 0.0000, N'352d06e9-8456-4966-9c73-3f227b023962', CAST(N'2023-10-18T05:41:41.000' AS DateTime))
 INSERT [SalesOrderDetail] ([SalesOrderID], [SalesOrderDetailID], [OrderQty], [ProductID], [UnitPrice], [UnitPriceDiscount], [rowguid], [ModifiedDate]) VALUES (71938, 113315, 3, 800, 672.2940, 0.0000, N'78f73142-e566-453f-a2b9-88a0fcaf4552', CAST(N'2023-02-02T19:39:26.000' AS DateTime))
 INSERT [SalesOrderDetail] ([SalesOrderID], [SalesOrderDetailID], [OrderQty], [ProductID], [UnitPrice], [UnitPriceDiscount], [rowguid], [ModifiedDate]) VALUES (71946, 113406, 1, 916, 31.5840, 0.0000, N'b571cee0-a90a-4e76-9796-379b55352a28', CAST(N'2023-10-22T19:05:42.000' AS DateTime))`,
-      `SET IDENTITY_INSERT [SalesOrderDetail] OFF`,
     ];
     azSqlHelper = new AzSqlHelper(rgName, sqlCommands);
     return azSqlHelper;
