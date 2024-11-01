@@ -115,7 +115,7 @@ export const debugInitMap: Record<TemplateProject, () => Promise<void>> = {
     await startDebugging("Debug in Teams (Chrome)");
   },
   [TemplateProject.IntelligentDataChart]: async () => {
-    await startDebugging();
+    await startDebugging("Debug (Chrome)");
   },
 };
 
