@@ -44,7 +44,7 @@ class BotSSOTestCase extends CaseFactory {
     const envFilePath = path.resolve(
       sampledebugContext.projectPath,
       "env",
-      ".env.local.user"
+      ".env.dev.user"
     );
     editDotEnvFile(envFilePath, "SQL_USER", azSqlHelper?.sqlAdmin ?? "");
     editDotEnvFile(
@@ -82,12 +82,7 @@ class BotSSOTestCase extends CaseFactory {
 
 new BotSSOTestCase(
   TemplateProject.IntelligentDataChart,
-  26461509,
+  27852477,
   "v-ivanchen@microsoft.com",
-  "local",
-  [
-    LocalDebugTaskLabel.StartFrontend,
-    LocalDebugTaskLabel.WatchBackend,
-    LocalDebugTaskLabel.StartBackend,
-  ]
+  "dev"
 ).test();
