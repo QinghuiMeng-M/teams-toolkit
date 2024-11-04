@@ -718,7 +718,7 @@ describe("SPFxGenerator", function () {
       };
       const result = await SPFxGenerator.generate(context, inputs, testFolder);
 
-      chai.expect(context.templateVariables!.SpfxNodeVersion).eq("16 || 18");
+      chai.expect(context.templateVariables!.SpfxNodeVersion).eq("18");
       chai.expect(result.isOk()).to.eq(true);
     });
 
@@ -744,7 +744,7 @@ describe("SPFxGenerator", function () {
       };
       const result = await SPFxGenerator.generate(context, inputs, testFolder);
 
-      chai.expect(context.templateVariables!.SpfxNodeVersion).eq("16 || 18");
+      chai.expect(context.templateVariables!.SpfxNodeVersion).eq("18");
       chai.expect(result.isOk()).to.eq(true);
     });
   });
