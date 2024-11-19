@@ -15,6 +15,7 @@ import {
   LocalDebugTaskLabel,
   LocalDebugTaskInfo,
   DebugItemSelect,
+  LocalDebugTaskLabel2,
 } from "../../utils/constants";
 import { Env } from "../../utils/env";
 import { it } from "../../utils/it";
@@ -59,7 +60,7 @@ describe("Express Notification Bot Local Debug Tests", function () {
       await waitForTerminal(LocalDebugTaskLabel.StartLocalTunnel);
       await waitForTerminal(
         LocalDebugTaskLabel.StartBotApp,
-        LocalDebugTaskInfo.StartBotAppInfo
+        LocalDebugTaskLabel2.StartBot2
       );
 
       const teamsAppId = await localDebugTestContext.getTeamsAppId();

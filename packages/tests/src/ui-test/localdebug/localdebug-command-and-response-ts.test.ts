@@ -22,6 +22,7 @@ import {
   LocalDebugTaskLabel,
   LocalDebugTaskInfo,
   DebugItemSelect,
+  LocalDebugTaskLabel2,
 } from "../../utils/constants";
 import { Env } from "../../utils/env";
 import { it } from "../../utils/it";
@@ -84,8 +85,8 @@ describe("Command And Response Bot Local Debug Tests", function () {
         await startDebugging(DebugItemSelect.DebugInTeamsUsingChrome);
         await waitForTerminal(LocalDebugTaskLabel.StartLocalTunnel);
         await waitForTerminal(
-          LocalDebugTaskLabel.StartBotApp,
-          LocalDebugTaskInfo.StartBotAppInfo
+          LocalDebugTaskLabel.StartBotApp,,
+          LocalDebugTaskLabel2.StartBot2
         );
 
         // check if there is error "Could not attach to main target"
@@ -93,7 +94,7 @@ describe("Command And Response Bot Local Debug Tests", function () {
         try {
           await waitForTerminal(
             LocalDebugTaskLabel.StartBotApp,
-            LocalDebugTaskInfo.StartBotAppInfo
+            LocalDebugTaskLabel2.StartBot2
           );
         } catch {
           const dialog = new ModalDialog();
@@ -115,14 +116,14 @@ describe("Command And Response Bot Local Debug Tests", function () {
           try {
             await waitForTerminal(
               LocalDebugTaskLabel.StartBotApp,
-              LocalDebugTaskInfo.StartBotAppInfo
+              LocalDebugTaskLabel2.StartBot2
             );
 
             // check if there is error "Debug Anyway"
             await driver.sleep(Timeout.startdebugging);
             await waitForTerminal(
               LocalDebugTaskLabel.StartBotApp,
-              LocalDebugTaskInfo.StartBotAppInfo
+              LocalDebugTaskLabel2.StartBot2
             );
           } catch {
             const dialog = new ModalDialog();
@@ -132,7 +133,7 @@ describe("Command And Response Bot Local Debug Tests", function () {
             await driver.sleep(Timeout.shortTimeLoading);
             await waitForTerminal(
               LocalDebugTaskLabel.StartBotApp,
-              LocalDebugTaskInfo.StartBotAppInfo
+              LocalDebugTaskLabel2.StartBot2
             );
           }
         }

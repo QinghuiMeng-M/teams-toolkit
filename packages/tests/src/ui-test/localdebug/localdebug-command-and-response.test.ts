@@ -22,6 +22,7 @@ import {
   LocalDebugTaskLabel,
   LocalDebugTaskInfo,
   DebugItemSelect,
+  LocalDebugTaskLabel2,
 } from "../../utils/constants";
 import { Env } from "../../utils/env";
 import { it } from "../../utils/it";
@@ -83,7 +84,7 @@ describe("Command And Response Bot Local Debug Tests", function () {
         await waitForTerminal(LocalDebugTaskLabel.StartLocalTunnel);
         await waitForTerminal(
           LocalDebugTaskLabel.StartBotApp,
-          LocalDebugTaskInfo.StartBotAppInfo
+          LocalDebugTaskLabel2.StartBot2
         );
 
         // check if there is error "Could not attach to main target"
