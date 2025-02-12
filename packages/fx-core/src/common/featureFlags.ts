@@ -45,7 +45,7 @@ export class FeatureFlags {
   static readonly METestTool = { name: FeatureFlagName.METestTool, defaultValue: "true" };
   static readonly OfficeMetaOS = {
     name: FeatureFlagName.OfficeMetaOS,
-    defaultValue: "false",
+    defaultValue: "true",
   };
   static readonly TdpTemplateCliTest = {
     name: FeatureFlagName.TdpTemplateCliTest,
