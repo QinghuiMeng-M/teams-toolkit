@@ -53,7 +53,12 @@ import {
   ProgrammingLanguage,
   QuestionNames,
 } from "../../../question/constants";
-import { SummaryConstant } from "../../configManager/constant";
+import {
+  APIKeyAuthType,
+  MicrosoftEntraAuthType,
+  OAuthAuthType,
+  SummaryConstant,
+} from "../../configManager/constant";
 import { manifestUtils } from "../../driver/teamsApp/utils/ManifestUtils";
 import { pluginManifestUtils } from "../../driver/teamsApp/utils/PluginManifestUtils";
 import {
@@ -629,7 +634,7 @@ export async function injectAuthAction(
 
   const relativeSpecPath = "./" + path.relative(projectPath, outputApiSpecPath).replace(/\\/g, "/");
 
-  if ((!!authScheme && Utils.isBearerTokenAuth(authScheme)) || authType === "ApiKeyPluginVault") {
+  if ((!!authScheme && Utils.isBearerTokenAuth(authScheme)) || authType === APIKeyAuthType) {
     const res = await ActionInjector.injectCreateAPIKeyAction(
       ymlPath,
       authName,
@@ -648,13 +653,15 @@ export async function injectAuthAction(
     return res;
   } else if (
     (!!authScheme && Utils.isOAuthWithAuthCodeFlow(authScheme)) ||
-    authType === "OAuth2PluginVault"
+    authType === OAuthAuthType ||
+    authType === MicrosoftEntraAuthType
   ) {
     const res = await ActionInjector.injectCreateOAuthAction(
       ymlPath,
       authName,
       relativeSpecPath,
-      forceToAddNew
+      forceToAddNew,
+      authType === MicrosoftEntraAuthType
     );
 
     if (await fs.pathExists(localYamlPath)) {
@@ -662,7 +669,8 @@ export async function injectAuthAction(
         localYamlPath,
         authName,
         relativeSpecPath,
-        forceToAddNew
+        forceToAddNew,
+        authType === MicrosoftEntraAuthType
       );
     }
     return res;
