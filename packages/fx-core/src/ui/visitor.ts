@@ -100,17 +100,27 @@ export const questionVisitor: QuestionTreeVisitor = async function (
   step?: number,
   totalSteps?: number
 ): Promise<Result<InputResult<any>, FxError>> {
-  // check and validate preset answer
   if (inputs[question.name] !== undefined) {
-    // validate existing answer in inputs object
+    //if answer is preset, validate it and quick return the preset answer
     const res = await validationUtils.validateInputs(question, inputs[question.name], inputs);
     if (res) return err(new InputValidationError(question.name, res, "questionVisitor"));
+    if (question.type === "singleSelect" && question.onDidSelection) {
+      const options = await loadOptions(question, inputs);
+      const presetAnswer = inputs[question.name];
+      const selected = (options as (string | OptionItem)[]).find((o: string | OptionItem) => {
+        if (typeof o === "string") return o === presetAnswer;
+        return o.id === presetAnswer;
+      });
+      if (selected) {
+        await question.onDidSelection(selected, inputs);
+      }
+    }
     return ok({ type: "skip", result: inputs[question.name] });
   }
 
   const skipSingle = await isAutoSkipSelect(question, inputs);
-  // non-interactive mode
   if (inputs.nonInteractive) {
+    // if no preset answer and non-interactive mode
     // first priority: use single option as value
     if (question.type === "singleSelect" || question.type === "multiSelect") {
       if (skipSingle) {
@@ -147,7 +157,7 @@ export const questionVisitor: QuestionTreeVisitor = async function (
     else return ok({ type: "skip", result: undefined });
   }
 
-  // interactive mode
+  //no preset answer and interactive mode, call UI
   const title = (await getCallFuncValue(inputs, question.title)) as string;
   let defaultValue:
     | string
@@ -202,7 +212,15 @@ export const questionVisitor: QuestionTreeVisitor = async function (
         return err(new EmptyOptionError(question.name, "questionVisitor"));
       }
       if (skipSingle && question.staticOptions.length === 1) {
+        // quick return for static options with only one item
         const returnResult = getSingleOption(question, question.staticOptions);
+        if (question.type === "singleSelect" && question.onDidSelection) {
+          let selected = returnResult as string | OptionItem;
+          if (typeof selected === "string") {
+            selected = question.staticOptions[0];
+          }
+          await question.onDidSelection(selected, inputs);
+        }
         return ok({ type: "skip", result: returnResult });
       }
       options = question.staticOptions;
@@ -211,7 +229,7 @@ export const questionVisitor: QuestionTreeVisitor = async function (
       const validationFunc = question.validation
         ? getValidationFunction<string>(question.validation, inputs)
         : undefined;
-      return await ui.selectOption({
+      const res = await ui.selectOption({
         name: question.name,
         title: title,
         options: options,
@@ -225,6 +243,17 @@ export const questionVisitor: QuestionTreeVisitor = async function (
         validation: validationFunc,
         skipSingleOption: skipSingle,
       });
+      if (res.isOk() && res.value.type === "success") {
+        let selected = res.value.result;
+        if (typeof selected === "string") {
+          const options = res.value.options as string[] | OptionItem[];
+          if (options && options.length > 0 && typeof options[0] !== "string") {
+            selected = (options as OptionItem[]).find((o: OptionItem) => o.id === selected);
+          }
+        }
+        await question.onDidSelection?.(selected!, inputs);
+      }
+      return res;
     } else {
       const validationFunc = question.validation
         ? getValidationFunction<string[]>(question.validation, inputs)

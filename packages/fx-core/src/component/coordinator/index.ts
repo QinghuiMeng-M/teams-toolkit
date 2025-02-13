@@ -204,19 +204,6 @@ class Coordinator {
       inputs.projectId = ensureRes.value;
     }
 
-    context.projectPath = projectPath;
-
-    if (inputs.teamsAppFromTdp) {
-      const res = await developerPortalScaffoldUtils.updateFilesForTdp(
-        context,
-        inputs.teamsAppFromTdp,
-        inputs
-      );
-      if (res.isErr()) {
-        return err(res.error);
-      }
-    }
-
     const trimRes = await manifestUtils.trimManifestShortName(projectPath);
     if (trimRes.isErr()) return err(trimRes.error);
 
