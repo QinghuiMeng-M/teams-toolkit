@@ -20,7 +20,7 @@
   
 - **Microsoft Entra Manifest**: Teams Toolkit has updated Microsoft Entra app manifest to apply MS Graph format for better integration with platform.
 
-- **Troubleshooting with GitHub Copilot Extension**: Teams Toolkit now improve the troubleshooting experience with GitHub Copilot extension by adding a "solve with @teamsapp" button, click this button will ask Teams Toolkit to open the output channel in the editor. Then the GitHub Copilot Chat will use the output log as a reference for troubleshooting requests. Consequently, @teamsapp can read the log and perform troubleshooting.
+- **Troubleshooting with GitHub Copilot Extension**: Teams Toolkit now improve the troubleshooting experience with GitHub Copilot extension by adding a "Resolve with @teamsapp" button, click this button will ask Teams Toolkit to open the output channel in the editor. Then the GitHub Copilot Chat will use the output log as a reference for troubleshooting requests. Consequently, @teamsapp can read the log and perform troubleshooting.
 
   <img width="412" alt="image" src="https://github.com/user-attachments/assets/60408b17-4cb2-4e80-805f-f554eae05661" />
 
@@ -28,7 +28,7 @@
 
   <img width="386" alt="image" src="https://github.com/user-attachments/assets/c197d84c-fa87-4269-bfb5-2609c6e00370" />
 
-- **Publish Teams App**: Refine the "Publish Teams App" UI in Teams Toolkit to reduce comfusion. Now there are two buttons: one for publishing the Teams app to your organization and another for publishing your app to the Teams store. The latter will require users to go to the Teams Developer Portal to complete the publishing process.
+- **Publish Teams App**: Refine the "Publish Teams App" UI in Teams Toolkit to reduce confusion. Now there are two buttons: one for publishing the Teams app to your organization and the other for publishing your app to the Teams store. The latter will require users to go to the Teams Developer Portal to complete the publishing process.
 
   <img width="432" alt="image" src="https://github.com/user-attachments/assets/c7acfd7c-a29b-4bda-8baa-c3ff5f5c47c9" />
 
