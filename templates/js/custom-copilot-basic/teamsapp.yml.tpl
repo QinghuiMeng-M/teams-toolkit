@@ -41,7 +41,6 @@ provision:
       # Teams Toolkit will download this bicep CLI version from github for you,
       # will use bicep CLI in PATH if you remove this config.
       bicepCliVersion: v0.9.1
-      
   {{^CEAEnabled}}
   # Validate using manifest schema
   - uses: teamsApp/validateManifest

@@ -46,9 +46,7 @@
                 {{#CEAEnabled}} 
                 "copilot",
                 {{/CEAEnabled}}
-                "personal",
-                "team",
-                "groupChat"
+                "personal"
             ],
             "supportsFiles": false,
             "isNotificationOnly": false,
@@ -78,8 +76,7 @@
     "configurableTabs": [],
     "staticTabs": [],
     "permissions": [
-        "identity",
-        "messageTeamMembers"
+        "identity"
     ],
     "validDomains": []
 }

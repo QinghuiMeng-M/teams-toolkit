@@ -42,7 +42,6 @@ provision:
       # will use bicep CLI in PATH if you remove this config.
       bicepCliVersion: v0.9.1
 
-  # Validate using manifest schema
   {{^CEAEnabled}}
   # Validate using manifest schema
   - uses: teamsApp/validateManifest
