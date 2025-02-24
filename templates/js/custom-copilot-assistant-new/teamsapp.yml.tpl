@@ -43,10 +43,13 @@ provision:
       bicepCliVersion: v0.9.1
 
   # Validate using manifest schema
+  {{^CEAEnabled}}
+  # Validate using manifest schema
   - uses: teamsApp/validateManifest
     with:
       # Path to manifest template
       manifestPath: ./appPackage/manifest.json
+  {{/CEAEnabled}}
   # Build Teams app package with latest env value
   - uses: teamsApp/zipAppPackage
     with:
@@ -105,11 +108,13 @@ deploy:
 
 # Triggered when 'teamsapp publish' is executed
 publish:
+  {{^CEAEnabled}}
   # Validate using manifest schema
   - uses: teamsApp/validateManifest
     with:
       # Path to manifest template
       manifestPath: ./appPackage/manifest.json
+  {{/CEAEnabled}}
   # Build Teams app package with latest env value
   - uses: teamsApp/zipAppPackage
     with:

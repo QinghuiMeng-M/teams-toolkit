@@ -43,13 +43,21 @@
         {
             "botId": "${{BOT_ID}}",
             "scopes": [
-                "personal"
+                {{#CEAEnabled}} 
+                "copilot",
+                {{/CEAEnabled}}
+                "personal",
+                "team",
+                "groupChat"
             ],
             "supportsFiles": false,
             "isNotificationOnly": false,
             "commandLists": [
                 {
                     "scopes": [
+                        {{#CEAEnabled}} 
+                        "copilot",
+                        {{/CEAEnabled}}
                         "personal"
                     ],
                     "commands": [
@@ -70,7 +78,8 @@
     "configurableTabs": [],
     "staticTabs": [],
     "permissions": [
-        "identity"
+        "identity",
+        "messageTeamMembers"
     ],
     "validDomains": []
 }
